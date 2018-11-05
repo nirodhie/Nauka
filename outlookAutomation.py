@@ -10,10 +10,16 @@ inbox = outlook.Folders['Lukasz.Teska@bd.com'].Folders['Skrzynka odbiorcza'].Fol
 messages = inbox.Items
 message = messages.GetLast()
 
-subject = "New user enrollment - "
+subject = "Onboarding (Wroclaw) - 19.11.2018"
 while message:
-    if subject in message.Subject:
+    if subject in message.Subject and "RE:" not in message.Subject and "FW:" not in message.Subject:
         print(message.subject.lstrip(subject)) # usun czesc tytulu ktora poszukujemy bo jest dla wszystkich taka sama
+        print(message.body.splitlines()[20])
+        print(message.body.splitlines()[24])
+        print(message.body.splitlines()[28])
+        print(message.body.splitlines()[32])
+        
+        print()
     message = messages.GetPrevious()
 
 '''
